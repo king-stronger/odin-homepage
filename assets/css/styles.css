@@ -1,3 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap');
+
+:root {
+    --flow: 1em;
+
+    --grid-gap: 0;
+    --grid-repeat: 1;
+    --grid-align: center;
+    --grid-content-size: 1fr;
+}
+
 /******************** RESET CSS ********************/
 *, *::before, *::after {
     box-sizing: border-box;
@@ -13,16 +24,25 @@ html {
 }
 
 body {
+    line-height: 1.5;
     min-height: 100dvh;
+    font-family: 'Poppins';
+}
+
+body > * + * {
+    margin-top: 8em;
 }
 
 p {
+    color: gray;
     max-width: 65ch;
+    font-size: 0.8rem;
 }
 
 img, video, picture, svg, canvas {
     display: block;
     max-width: 100%;
+    object-fit: cover;
 }
 
 input, select, textarea, button {
@@ -44,3 +64,198 @@ ul {
     list-style-type: none;
 }
 /******************** RESET CSS ********************/
+
+.wrapper {
+    padding-block: 3em;
+    margin-inline: auto;
+}
+
+.flow > * + * {
+    margin-top: var(--flow);
+}
+
+.bx {
+    font-size: 1.5rem;
+}
+
+.social-menu, .project-links-wrapper {
+    gap: 1em;
+    display: flex;
+    align-items: center;
+}
+
+/******************** HERO ********************/
+.hero {
+    width: 100%;
+    position: relative;
+    background: transparent;
+}
+
+.hero::before {
+    content: "";
+    z-index: -1;
+    inset: 0 0 0 0;
+    position: absolute;
+    background-color: #0891b2;
+}
+
+.hero-content {
+    padding: 1em;
+    background-color: white;
+}
+
+.hero-content h2, .hero .bx {
+    color: black;
+    font-size: 2rem;
+    font-weight: normal;
+}
+
+.hero-content p {
+    font-size: .9rem;
+}
+
+.hero .social-menu {
+    justify-content: end;
+}
+/******************** HERO ********************/
+
+
+/******************** MY WORK ********************/
+.my-work h2 {
+    font-size: 1.5rem;
+}
+
+.my-work h3 {
+    font-weight: normal;
+}
+
+.projects {
+    --flow: .5em;
+    box-shadow: 0 0 5px 1px lightgray;
+}
+
+.project-content {
+    padding: 1em;
+}
+
+.project-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+/******************** MY WORK ********************/
+
+
+.footer {
+    color: white;
+    background-color: #0891b2;
+}
+
+.footer-img {
+    aspect-ratio: 3/2;
+}
+
+.footer h2 {
+    color: white;
+    font-size: 1.5rem;
+}
+
+.footer p, .footer a {
+    color: white;
+    font-size: 1.1rem;
+    font-style: normal;
+}
+
+.email, .phone {
+    display: flex;
+    gap: .5em;
+    align-items: center;
+}
+
+.footer .social-links a {
+    color: black;
+    font-size: 2.5rem;
+}
+
+@media (width < 600px){
+    .wrapper {
+        width: min(100% - 4em, 1000px);
+    }
+
+    .grid {
+        gap: 3em;
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+
+    .hero::before {
+        clip-path: polygon(0% 0%, 100% 0%, 100% 30%, 0% 50%);
+    }
+
+    .footer .img-wrapper {
+        margin-inline: -2em;
+        margin-bottom: -3em;
+    }
+
+    .hero h2, .footer h2 {
+        text-align: center;
+    }
+}
+
+@media (min-width: 600px) and (max-width: 900px){
+    .grid {
+        gap: 3em;
+        display: grid;
+        align-items: center;
+    }
+
+    .hero .grid {
+        column-gap: 0;
+        grid-template-columns: 1fr 1.5fr;
+    }
+    
+    .my-work .grid, .footer .grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .hero::before {
+        clip-path: polygon(0% 0%, 100% 0%, 100% 30%, 0% 70%);
+    }
+
+    .hero-content {
+        box-shadow: 0 0 10px gray;
+    }
+}
+
+@media (width > 900px){
+    .wrapper {
+        width: min(100% - 8em, 1000px);
+    }
+
+    .grid {
+        gap: 3em;
+        display: grid;
+        align-items: center;
+    }
+
+    .hero .grid {
+        column-gap: 0;
+        grid-template-columns: 1fr 1.5fr;
+    }
+
+    .footer .grid {
+        grid-template-columns: 1fr 1fr;
+    }
+    
+    .my-work .grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .hero::before {
+        clip-path: polygon(0% 0%, 100% 0%, 100% 50%, 0% 90%);
+    }
+
+    .hero-content {
+        box-shadow: 0 0 10px gray;
+    }
+}
